@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useContext} from 'react';
+import React, { useContext } from 'react';
 import { XCircleIcon } from '@heroicons/react/outline';
 import Layout from '../components/Layout';
 import { Store } from '../utils/Store';
@@ -87,13 +87,13 @@ function CartScreen() {
             <ul>
               <li>
                 <div className="pb-3 text-xl">
-                  Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) : Ksh{' '}
-                  {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                  Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) :
+                  Ksh {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
                 </div>
               </li>
               <li>
                 <button
-                  onClick={() => router.push('/shipping')}
+                  onClick={() => router.push('login?redirect=/shipping')}
                   className="primary-button w-full"
                 >
                   Check Out
