@@ -1,5 +1,4 @@
-Create Place Order Screen
-    1. display shipping address
-    2. display payment method
-    3. display order items
-    4. implment create order
+Create Register Screen
+    1. add signup api
+    2. create register page
+    3. call api on form submit
