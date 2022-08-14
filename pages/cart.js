@@ -9,27 +9,27 @@ import dynamic from 'next/dynamic';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-export function CartScreen() {
-  // const router = useRouter();
-  // const { state, dispatch } = useContext(Store);
-  // const {
-  //   cart: { cartItems },
-  // } = state;
-  // const removeItemHandler = (item) => {
-  //   dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
-  // };
-  // const updateCartHandler = async (item, qty) => {
-  //   const quantity = Number(qty);
-  //   const { data } = await axios.get(`/api/products/${item._id}`);
-  //   if (data.countInStock < quantity) {
-  //     return toast.error('Sorry. Product is out of stock');
-  //   }
-  //   dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
-  //   toast.success('Product updated in the cart');
-  // };
+function CartScreen() {
+  const router = useRouter();
+  const { state, dispatch } = useContext(Store);
+  const {
+    cart: { cartItems },
+  } = state;
+  const removeItemHandler = (item) => {
+    dispatch({ type: 'CART_REMOVE_ITEM', payload: item });
+  };
+  const updateCartHandler = async (item, qty) => {
+    const quantity = Number(qty);
+    const { data } = await axios.get(`/api/products/${item._id}`);
+    if (data.countInStock < quantity) {
+      return toast.error('Sorry. Product is out of stock');
+    }
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...item, quantity } });
+    toast.success('Product updated in the cart');
+  };
   return (
     <Layout title="Shopping Cart">
-      {/* <h1 className="mb-4 text-xl">Shopping Cart</h1>
+      <h1 className="mb-4 text-xl">Shopping Cart</h1>
       {cartItems.length === 0 ? (
         <div>
           Cart is empty. <Link href="/">Go shopping</Link>
@@ -107,9 +107,9 @@ export function CartScreen() {
             </ul>
           </div>
         </div>
-      )} */}
+      )}
     </Layout>
   );
 }
 
-// export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
+export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
